@@ -35,22 +35,14 @@ namespace UnityEngine.XR.iOS
 			//do coordinate conversion from ARKit to Unity
 			plane.transform.position = UnityARMatrixOps.GetPosition (arPlaneAnchor.transform);
 			plane.transform.rotation = UnityARMatrixOps.GetRotation (arPlaneAnchor.transform);
-			var rb1 = plane.gameObject.GetComponent<Rigidbody>();
-			if(rb1 != null)
-			{					
-				rb1.transform.localScale =  new Vector3(arPlaneAnchor.extent.x * 0.1f ,arPlaneAnchor.extent.y * 0.1f, 1);
-			}
+		
 
 			MeshFilter mf = plane.GetComponentInChildren<MeshFilter> ();
 
 			if (mf != null) {
                 //since our plane mesh is actually 10mx10m in the world, we scale it here by 0.1f
                 mf.gameObject.transform.localScale = new Vector3(arPlaneAnchor.extent.x * 0.1f ,arPlaneAnchor.extent.y * 0.1f ,arPlaneAnchor.extent.z * 0.1f );
-				
-				var rb2 = mf.gameObject.GetComponent<Rigidbody>();
-				if(rb2 != null){					
-					rb2.transform.localScale =  new Vector3(arPlaneAnchor.extent.x * 0.1f ,arPlaneAnchor.extent.y * 0.1f, 1);
-				}
+			
 				
                 //convert our center position to unity coords
                 mf.gameObject.transform.localPosition = new Vector3(arPlaneAnchor.center.x,arPlaneAnchor.center.y, -arPlaneAnchor.center.z);

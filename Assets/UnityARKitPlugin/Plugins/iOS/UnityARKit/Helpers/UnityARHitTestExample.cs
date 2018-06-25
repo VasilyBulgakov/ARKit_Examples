@@ -20,17 +20,17 @@ namespace UnityEngine.XR.iOS
                     m_HitTransform.rotation = UnityARMatrixOps.GetRotation (hitResult.worldTransform);
                     Debug.Log (string.Format ("x:{0:0.######} y:{1:0.######} z:{2:0.######}", m_HitTransform.position.x, m_HitTransform.position.y, m_HitTransform.position.z));
                     
-					if(m_SpawnPrefab !=  null)
-					{						
-						GameObject newObj = GameObject.Instantiate(m_SpawnPrefab);
-						newObj.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
-						newObj.transform.Translate(0, 1, 0);
+					// if(m_SpawnPrefab !=  null)
+					// {						
+					// 	GameObject newObj = GameObject.Instantiate(m_SpawnPrefab);
+					// 	newObj.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
+					// 	newObj.transform.Translate(0, 1, 0);
 
-						GameObject newObj2 = GameObject.Instantiate(m_SpawnPrefab);
-						newObj2.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
-						newObj2.transform.Translate(0.1f, 0.1f, 0);
+					// 	GameObject newObj2 = GameObject.Instantiate(m_SpawnPrefab);
+					// 	newObj2.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
+					// 	newObj2.transform.Translate(0.1f, 0.1f, 0);
 
-					}
+					// }
 					
 					return true;
                 }
