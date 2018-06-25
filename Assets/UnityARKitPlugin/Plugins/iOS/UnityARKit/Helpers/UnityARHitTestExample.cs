@@ -6,6 +6,7 @@ namespace UnityEngine.XR.iOS
 	public class UnityARHitTestExample : MonoBehaviour
 	{
 		public Transform m_HitTransform;
+		public GameObject m_SpawnPrefab;
 		public float maxRayDistance = 30.0f;
 		public LayerMask collisionLayer = 1 << 10;  //ARKitPlane layer
 
@@ -15,11 +16,23 @@ namespace UnityEngine.XR.iOS
             if (hitResults.Count > 0) {
                 foreach (var hitResult in hitResults) {
                     Debug.Log ("Got hit!");
-                    m_HitTransform.position = UnityARMatrixOps.GetPosition (hitResult.worldTransform);
-					 m_HitTransform.Translate(0,1,0);
+                    m_HitTransform.position = UnityARMatrixOps.GetPosition (hitResult.worldTransform);					
                     m_HitTransform.rotation = UnityARMatrixOps.GetRotation (hitResult.worldTransform);
                     Debug.Log (string.Format ("x:{0:0.######} y:{1:0.######} z:{2:0.######}", m_HitTransform.position.x, m_HitTransform.position.y, m_HitTransform.position.z));
-                    return true;
+                    
+					if(m_SpawnPrefab !=  null)
+					{						
+						GameObject newObj = GameObject.Instantiate(m_SpawnPrefab);
+						newObj.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
+						newObj.transform.Translate(0, 1, 0);
+
+						GameObject newObj2 = GameObject.Instantiate(m_SpawnPrefab);
+						newObj2.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
+						newObj2.transform.Translate(0.1f, 0.1f, 0);
+
+					}
+					
+					return true;
                 }
             }
             return false;
