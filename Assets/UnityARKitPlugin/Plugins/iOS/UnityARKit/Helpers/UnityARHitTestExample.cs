@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+
+
 namespace UnityEngine.XR.iOS
 {
 	public class UnityARHitTestExample : MonoBehaviour
@@ -34,7 +36,7 @@ namespace UnityEngine.XR.iOS
 						newObj2.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
 						newObj2.transform.Translate(0.1f, 0.1f, 0);
 
-						spawnTimer = spawnInterval;			
+						spawnTimer = spawnInterval;				
 					}
 					else{
 						spawnTimer -= Time.deltaTime;						
@@ -84,14 +86,18 @@ namespace UnityEngine.XR.iOS
                         ARHitTestResultType.ARHitTestResultTypeHorizontalPlane, 
                         ARHitTestResultType.ARHitTestResultTypeFeaturePoint
                     }; 
+
+					Vector3 hitPos;
+
 					
-                    foreach (ARHitTestResultType resultType in resultTypes)
-                    {
-                        if (HitTestWithResultType (point, resultType))
-                        {
-                            return;
-                        }
-                    }
+					
+                    // foreach (ARHitTestResultType resultType in resultTypes)
+                    // {
+                    //     if (HitTestWithResultType (point, resultType))
+                    //     {
+                    //         return;
+                    //     }
+                    // }
 				}
 			}
 			#endif

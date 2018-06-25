@@ -790,7 +790,7 @@ GameObject:
   - component: {fileID: 1428923971}
   - component: {fileID: 1428923970}
   - component: {fileID: 1428923969}
-  - component: {fileID: 1428923968}
+  - component: {fileID: 1428923967}
   m_Layer: 0
   m_Name: HitCube
   m_TagString: Untagged
@@ -814,7 +814,7 @@ Transform:
   m_Father: {fileID: 1320907943}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1428923968
+--- !u!114 &1428923967
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
@@ -822,13 +822,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1428923965}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6941ec02ead994c9b848d640887441f1, type: 3}
+  m_Script: {fileID: 11500000, guid: fd7bc1c10d0316b4bb062a82f7807353, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_HitTransform: {fileID: 1320907943}
-  m_SpawnPrefab: {fileID: 1314955223187332, guid: 5d0b9c74abf666f43b2e2d5cc03c9db3,
-    type: 2}
-  maxRayDistance: 30
+  m_SpawnPrefab: {fileID: 0}
   collisionLayer:
     serializedVersion: 2
     m_Bits: 1024
