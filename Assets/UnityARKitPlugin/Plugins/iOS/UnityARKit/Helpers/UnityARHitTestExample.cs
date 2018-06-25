@@ -10,6 +10,10 @@ namespace UnityEngine.XR.iOS
 		public float maxRayDistance = 30.0f;
 		public LayerMask collisionLayer = 1 << 10;  //ARKitPlane layer
 
+	
+		private float spawnTimer = 0;
+		private float spawnInterval = 0.5f;
+
         bool HitTestWithResultType (ARPoint point, ARHitTestResultType resultTypes)
         {
             List<ARHitTestResult> hitResults = UnityARSessionNativeInterface.GetARSessionNativeInterface ().HitTest (point, resultTypes);
@@ -20,7 +24,7 @@ namespace UnityEngine.XR.iOS
                     m_HitTransform.rotation = UnityARMatrixOps.GetRotation (hitResult.worldTransform);
                     Debug.Log (string.Format ("x:{0:0.######} y:{1:0.######} z:{2:0.######}", m_HitTransform.position.x, m_HitTransform.position.y, m_HitTransform.position.z));
                     
-					if(m_SpawnPrefab !=  null)
+					if(m_SpawnPrefab !=  null && spawnTimer < 0)
 					{						
 						GameObject newObj = GameObject.Instantiate(m_SpawnPrefab);
 						newObj.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
@@ -30,6 +34,10 @@ namespace UnityEngine.XR.iOS
 						newObj2.transform.SetPositionAndRotation(m_HitTransform.position, m_HitTransform.rotation);
 						newObj2.transform.Translate(0.1f, 0.1f, 0);
 
+						spawnTimer = spawnInterval;			
+					}
+					else{
+						spawnTimer -= Time.deltaTime;						
 					}
 					
 					return true;
