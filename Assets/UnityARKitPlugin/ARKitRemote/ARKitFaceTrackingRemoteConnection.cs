@@ -51,7 +51,7 @@ namespace UnityEngine.XR.iOS
 		void PlayerConnected(int playerID)
 		{
 			currentPlayerID = playerID;
-
+			
 		}
 
 		void OnGUI()
